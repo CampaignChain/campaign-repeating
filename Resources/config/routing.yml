@@ -1,0 +1,40 @@
+# This file is part of the CampaignChain package.
+#
+# (c) Sandro Groganz <sandro@campaignchain.com>
+#
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
+
+campaignchain_campaign_repeating_new:
+    pattern: /campaign/repeating/new
+    defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:new }
+
+campaignchain_campaign_repeating_edit:
+    pattern: /campaign/repeating/{id}/edit
+    defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:edit }
+
+campaignchain_campaign_repeating_edit_modal:
+    pattern: /modal/campaign/repeating/{id}/edit
+    defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:editModal }
+
+campaignchain_campaign_repeating_edit_api:
+    pattern: /api/private/campaign/repeating/byactivity/{id}/edit
+    defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:editApi }
+    options:
+        expose: true
+    
+campaignchain_campaign_repeating_plan:
+    pattern: /campaigns/repeating
+    defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:index }
+
+campaignchain_campaign_repeating_plan_timeline_detail:
+    pattern:  /campaign/repeating/plan/timeline/{id}
+    defaults: { _controller: CampaignChainCampaignRepeatingBundle:RepeatingPlan:timelineDetail }
+
+campaignchain_campaign_repeating_plan_timeline_detail_fullscreen:
+    pattern:  /campaign/repeating/plan/timeline/fullscreen/{id}
+    defaults: { _controller: CampaignChainCampaignRepeatingBundle:RepeatingPlan:timelineDetailFullScreen }
+
+campaignchain_campaign_repeating_copy:
+    pattern:  /campaign/repeating/copy/{id}
+    defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:copy }

@@ -1,0 +1,17 @@
+modules:
+    campaignchain-repeating:
+        display_name: Repeating Campaign
+        description: A campaign that is being repeated automatically.
+        routes: 
+            new: campaignchain_campaign_repeating_new
+            edit: campaignchain_campaign_repeating_edit
+            edit_modal: campaignchain_campaign_repeating_edit_modal
+            edit_api: campaignchain_campaign_repeating_edit_api
+            plan: campaignchain_campaign_repeating_plan
+            plan_detail: campaignchain_campaign_repeating_plan_timeline_detail
+            plan_detail_fullscreen: campaignchain_campaign_repeating_plan_timeline_detail_fullscreen
+            copy: campaignchain_campaign_repeating_copy
+        hooks:
+            default:
+                campaignchain-timespan: true
+                campaignchain-date-repeat: true

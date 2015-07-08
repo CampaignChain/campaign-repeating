@@ -1,0 +1,35 @@
+{
+    "name": "campaignchain/campaign-repeating",
+    "description": "A campaign that is being repeated automatically.",
+    "type": "campaignchain-campaign",
+    "license": "Apache-2.0",
+    "homepage": "http://www.campaignchain.com",
+    "authors": [
+        {
+            "name": "Sandro Groganz",
+            "email": "sandro@campaignchain.com"
+        }
+    ],
+    "require": {
+        "campaignchain/campaign-template": "dev-master",
+        "campaignchain/hook-date-repeat": "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "CampaignChain\\Campaign\\RepeatingBundle\\": "" }
+    },
+    "extra": {
+        "campaignchain": {
+            "kernel": {
+                "classes": [
+                    "CampaignChain\\Campaign\\RepeatingBundle\\CampaignChainCampaignRepeatingBundle"
+                ],
+                "routing":
+                {
+                    "name": "campaignchain_campaign_repeating",
+                    "resource": "@CampaignChainCampaignRepeatingBundle/Resources/config/routing.yml",
+                    "prefix": "/"
+                }
+            }
+        }
+    }
+}
