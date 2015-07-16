@@ -15,3 +15,5 @@ modules:
             default:
                 campaignchain-timespan: true
                 campaignchain-date-repeat: true
+        services:
+            job: campaignchain.job.campaign.repeating
