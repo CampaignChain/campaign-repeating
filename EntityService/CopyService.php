@@ -16,7 +16,7 @@ use CampaignChain\CoreBundle\Entity\Action;
 use CampaignChain\CoreBundle\Entity\Module;
 use CampaignChain\CoreBundle\Entity\Campaign;
 
-class RepeatingCampaignService
+class CopyService
 {
     protected $em;
     protected $container;
@@ -27,8 +27,12 @@ class RepeatingCampaignService
         $this->container = $container;
     }
 
-    public function copyRepeatingToScheduled(Campaign $repeatingCampaign, $status = Action::STATUS_OPEN)
+    public function repeating2Scheduled(Campaign $repeatingCampaign, $status = null, $name = null)
     {
+        if($status == null){
+            $status = Action::STATUS_OPEN;
+        }
+
         $campaignService = $this->container->get('campaignchain.core.campaign');
 
         try {
@@ -50,6 +54,9 @@ class RepeatingCampaignService
                 )
             );
             // Specify other parameters of scheduled campaign.
+            if($name != null){
+                $scheduledCampaign->setName($name);
+            }
             $scheduledCampaign->setHasRelativeDates(false);
             $scheduledCampaign->setStatus($status);
             $scheduledCampaign->setInterval(null);

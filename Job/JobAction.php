@@ -51,8 +51,8 @@ class JobAction implements JobActionInterface
         try {
             $this->em->getConnection()->beginTransaction();
 
-            $repeatingCampaignService = $this->container->get('campaignchain.campaign.repeating');
-            $scheduledCampaign = $repeatingCampaignService->copyRepeatingToScheduled(
+            $copyService = $this->container->get('campaignchain.campaign.repeating.copy');
+            $scheduledCampaign = $copyService->repeating2Scheduled(
                 $repeatingCampaign, Action::STATUS_BACKGROUND_PROCESS);
 
             // Add the new Repeating Campaign instance.
