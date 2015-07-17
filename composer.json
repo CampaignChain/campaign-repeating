@@ -1,6 +1,7 @@
 {
     "name": "campaignchain/campaign-repeating",
     "description": "A campaign that is being repeated automatically.",
+    "keywords": ["campaignchain"],
     "type": "campaignchain-campaign",
     "license": "Apache-2.0",
     "homepage": "http://www.campaignchain.com",
