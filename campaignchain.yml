@@ -17,3 +17,7 @@ modules:
                 campaignchain-date-repeat: true
         services:
             job: campaignchain.job.campaign.repeating
+        conversions:
+            - campaignchain/campaign-repeating/campaignchain-repeating
+            - campaignchain/campaign-scheduled/campaignchain-scheduled
+            - campaignchain/campaign-template/campaignchain-template
