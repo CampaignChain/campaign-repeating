@@ -1,7 +1,7 @@
 modules:
     campaignchain-repeating:
         display_name: Repeating Campaign
-        description: A campaign that is being repeated automatically.
+        description: A campaign that is being repeated automatically. For example, a campaign that runs for 30 days and is being repeated every first day of a month.
         routes: 
             new: campaignchain_campaign_repeating_new
             edit: campaignchain_campaign_repeating_edit
