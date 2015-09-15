@@ -17,8 +17,8 @@
         "docs": "http://doc.campaignchain.com"
     },
     "require": {
-        "campaignchain/campaign-template": "1.0.0-beta.2",
-        "campaignchain/hook-date-repeat": "1.0.0-beta.2"
+        "campaignchain/campaign-template": "dev-master",
+        "campaignchain/hook-date-repeat": "dev-master"
     },
     "autoload": {
         "psr-4": { "CampaignChain\\Campaign\\RepeatingBundle\\": "" }
