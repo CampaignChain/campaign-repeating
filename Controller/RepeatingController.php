@@ -20,6 +20,18 @@ class RepeatingController extends TemplateController
     const MODULE_IDENTIFIER = 'campaignchain-repeating';
     const TRIGGER_HOOK = 'campaignchain-date-repeat';
 
+    public function indexAction()
+    {
+        $repository_campaigns = $this->getDoctrine()->getRepository('CampaignChainCoreBundle:Campaign')->getCampaignsByModule(static::MODULE_IDENTIFIER);
+
+        return $this->render(
+            'CampaignChainCampaignRepeatingBundle::index.html.twig',
+            array(
+                'page_title' => static::CAMPAIGN_DISPLAY_NAME . 's',
+                'repository_campaigns' => $repository_campaigns,
+            ));
+    }
+
     public function copyAction(Request $request, $id)
     {
         $campaignService = $this->get('campaignchain.core.campaign');
