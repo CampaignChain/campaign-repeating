@@ -8,6 +8,8 @@
 campaignchain_campaign_repeating_new:
     pattern: /campaign/repeating/new
     defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:new }
+    options:
+        expose: true
 
 campaignchain_campaign_repeating_edit:
     pattern: /campaign/repeating/{id}/edit
