@@ -22,7 +22,7 @@ class RepeatingController extends TemplateController
 
     public function indexAction()
     {
-        $repository_campaigns = $this->getDoctrine()->getRepository('CampaignChainCoreBundle:Campaign')->getCampaignsByModule(static::MODULE_IDENTIFIER);
+        $repository_campaigns = $this->getDoctrine()->getRepository('CampaignChainCoreBundle:Campaign')->getCampaignsByModule(static::MODULE_IDENTIFIER, static::BUNDLE_NAME);
 
         return $this->render(
             'CampaignChainCampaignRepeatingBundle::index.html.twig',
