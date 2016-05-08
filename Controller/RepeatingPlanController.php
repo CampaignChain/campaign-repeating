@@ -10,8 +10,6 @@
 
 namespace CampaignChain\Campaign\RepeatingBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use CampaignChain\Campaign\TemplateBundle\Controller\PlanController;
 
 class RepeatingPlanController extends PlanController
