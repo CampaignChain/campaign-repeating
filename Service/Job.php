@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CampaignChain\Campaign\RepeatingBundle\Job;
+namespace CampaignChain\Campaign\RepeatingBundle\Service;
 
 use CampaignChain\CoreBundle\Entity\Action;
 use CampaignChain\CoreBundle\Entity\Campaign;
@@ -19,7 +19,7 @@ use CampaignChain\CoreBundle\Job\JobActionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use CampaignChain\Campaign\RepeatingBundle\Entity\RepeatingCampaignInstance;
 
-class JobAction implements JobActionInterface
+class Job implements JobActionInterface
 {
     protected $logger;
     protected $em;
@@ -46,11 +46,33 @@ class JobAction implements JobActionInterface
         $this->logger = $this->container->get('logger');
 
         $campaignService = $this->container->get('campaignchain.core.campaign');
+        /** @var Campaign $repeatingCampaign */
         $repeatingCampaign = $campaignService->getCampaign($id);
 
         try {
             $this->em->getConnection()->beginTransaction();
 
+            $now = new \DateTime('now');
+
+            // Has the interval's end date been reached?
+            if(
+                $repeatingCampaign->getIntervalEndDate() &&
+                $repeatingCampaign->getIntervalEndDate() < $now
+            ){
+                $repeatingCampaign->setStatus(Action::STATUS_CLOSED);
+
+                $this->message =
+                    'Closed Repeating Campaign "'.$repeatingCampaign->getName().
+                    '" with ID "'.$repeatingCampaign->getId().'" due to '
+                    .'end date '
+                    .$repeatingCampaign->getIntervalEndDate()->format(\DateTime::ISO8601);
+
+                $this->em->getConnection()->commit();
+
+                return self::STATUS_OK;
+            }
+
+            /** @var Copy $copyService */
             $copyService = $this->container->get('campaignchain.campaign.repeating.copy');
             $scheduledCampaign = $copyService->repeating2Scheduled(
                 $repeatingCampaign, $repeatingCampaign->getIntervalNextRun(),
@@ -110,6 +132,10 @@ class JobAction implements JobActionInterface
                 $this->message .= ' Next run at '.$updatedNextRun->format(\DateTime::ISO8601);
             } else {
                 $repeatingCampaign->setStatus(Action::STATUS_CLOSED);
+
+                $this->message =
+                    'Closed Repeating Campaign "'.$repeatingCampaign->getName().
+                    '" with ID "'.$repeatingCampaign->getId().'"';
             }
 
             $this->em->getConnection()->commit();

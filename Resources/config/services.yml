@@ -7,8 +7,8 @@
 
 services:
     campaignchain.job.campaign.repeating:
-        class: CampaignChain\Campaign\RepeatingBundle\Job\JobAction
+        class: CampaignChain\Campaign\RepeatingBundle\Service\Job
         arguments: [ @doctrine.orm.entity_manager, @service_container ]
     campaignchain.campaign.repeating.copy:
-        class: CampaignChain\Campaign\RepeatingBundle\EntityService\CopyService
+        class: CampaignChain\Campaign\RepeatingBundle\Service\Copy
         arguments: [ @doctrine.orm.entity_manager, @service_container ]

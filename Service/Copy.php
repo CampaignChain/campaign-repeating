@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CampaignChain\Campaign\RepeatingBundle\EntityService;
+namespace CampaignChain\Campaign\RepeatingBundle\Service;
 
 use CampaignChain\Hook\DateRepeatBundle\Entity\DateRepeat;
 use Doctrine\ORM\EntityManager;
@@ -17,7 +17,7 @@ use CampaignChain\CoreBundle\Entity\Action;
 use CampaignChain\CoreBundle\Entity\Module;
 use CampaignChain\CoreBundle\Entity\Campaign;
 
-class CopyService
+class Copy
 {
     const BUNDLE_NAME = 'campaignchain/campaign-repeating';
     const MODULE_IDENTIFIER = 'campaignchain-repeating';
