@@ -17,8 +17,13 @@
 
 namespace CampaignChain\Campaign\RepeatingBundle;
 
+use CampaignChain\Campaign\RepeatingBundle\DependencyInjection\CampaignChainCampaignRepeatingExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class CampaignChainCampaignRepeatingBundle extends Bundle
 {
+    public function getContainerExtension()
+    {
+        return new CampaignChainCampaignRepeatingExtension();
+    }
 }
