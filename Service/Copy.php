@@ -63,7 +63,10 @@ class Copy
         }
     }
 
-    public function repeating2Scheduled(Campaign $repeatingCampaign, \DateTime $startDate, $status = null, $name = null)
+    public function repeating2Scheduled(
+        Campaign $repeatingCampaign, \DateTime $startDate,
+        $status = null, $name = null, $asChild = false
+    )
     {
         if($status == null){
             $status = Action::STATUS_OPEN;
@@ -75,6 +78,7 @@ class Copy
             $this->em->getConnection()->beginTransaction();
 
             // Clone the campaign template.
+            /** @var Campaign $scheduledCampaign */
             $scheduledCampaign = $campaignService->cloneCampaign(
                 $repeatingCampaign,
                 $status
@@ -104,6 +108,10 @@ class Copy
             $scheduledCampaign->setTriggerHook(
                 $hookService->getHook('campaignchain-duration')
             );
+            if($asChild){
+                $scheduledCampaign->setParent($repeatingCampaign);
+                $repeatingCampaign->addChild($scheduledCampaign);
+            }
 
             $this->em->flush();
 

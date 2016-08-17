@@ -24,7 +24,6 @@ use Doctrine\ORM\EntityManager;
 use CampaignChain\CoreBundle\Entity\Medium;
 use CampaignChain\CoreBundle\Job\JobActionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use CampaignChain\Campaign\RepeatingBundle\Entity\RepeatingCampaignInstance;
 
 class Job implements JobActionInterface
 {
@@ -83,13 +82,8 @@ class Job implements JobActionInterface
             $copyService = $this->container->get('campaignchain.campaign.repeating.copy');
             $scheduledCampaign = $copyService->repeating2Scheduled(
                 $repeatingCampaign, $repeatingCampaign->getIntervalNextRun(),
-                Action::STATUS_BACKGROUND_PROCESS);
-
-            // Add the new Repeating Campaign instance.
-            $instance = new RepeatingCampaignInstance();
-            $instance->setRepeatingCampaign($repeatingCampaign);
-            $instance->setScheduledCampaign($scheduledCampaign);
-            $this->em->persist($instance);
+                Action::STATUS_BACKGROUND_PROCESS, null, true
+            );
 
             $this->message =
                 'Created new background processes for Repeating Campaign "'.$repeatingCampaign->getName().
