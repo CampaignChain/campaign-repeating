@@ -19,3 +19,8 @@ services:
     campaignchain.campaign.repeating.copy:
         class: CampaignChain\Campaign\RepeatingBundle\Service\Copy
         arguments: [ @doctrine.orm.entity_manager, @service_container ]
+    campaignchain_campaign_repeating.update.instances:
+        class: CampaignChain\Campaign\RepeatingBundle\Resources\update\data\UpdateInstances
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+        tags:
