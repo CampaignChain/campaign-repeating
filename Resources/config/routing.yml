@@ -39,6 +39,8 @@ campaignchain_campaign_repeating_plan:
 campaignchain_campaign_repeating_plan_timeline_detail:
     pattern:  /campaign/repeating/plan/timeline/{id}
     defaults: { _controller: CampaignChainCampaignRepeatingBundle:RepeatingPlan:timelineDetail }
+    options:
+        expose: true
 
 campaignchain_campaign_repeating_plan_timeline_detail_fullscreen:
     pattern:  /campaign/repeating/plan/timeline/fullscreen/{id}
