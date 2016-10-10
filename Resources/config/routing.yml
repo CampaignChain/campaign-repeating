@@ -33,8 +33,11 @@ campaignchain_campaign_repeating_edit_api:
         expose: true
     
 campaignchain_campaign_repeating_plan:
-    pattern: /campaigns/repeating
-    defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:index }
+    path: /campaigns/repeating
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: campaignchain_core_plan
+        permanent: true
 
 campaignchain_campaign_repeating_plan_timeline_detail:
     pattern:  /campaign/repeating/plan/timeline/{id}
