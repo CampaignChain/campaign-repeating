@@ -22,5 +22,5 @@ services:
     campaignchain_campaign_repeating.update.instances:
         class: CampaignChain\Campaign\RepeatingBundle\Resources\update\data\UpdateInstances
         arguments:
-            - '@doctrine.orm.default_entity_manager'
+            - '@doctrine.orm.entity_manager'
         tags:
