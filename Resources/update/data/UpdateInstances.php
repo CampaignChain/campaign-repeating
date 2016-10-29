@@ -18,18 +18,18 @@
 namespace CampaignChain\Campaign\RepeatingBundle\Resources\update\data;
 
 use CampaignChain\CoreBundle\Entity\Campaign;
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
 class UpdateInstances
 {
     /**
-     * @var EntityManager
+     * @var Registry
      */
     private $em;
 
-    public function __construct(EntityManager $em)
+    public function __construct(ManagerRegistry $managerRegistry)
     {
-        $this->em = $em;
+        $this->em = $managerRegistry->getManager();
     }
 
     public function execute()
