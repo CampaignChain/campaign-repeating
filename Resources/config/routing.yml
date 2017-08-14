@@ -13,21 +13,21 @@
 # limitations under the License.
 
 campaignchain_campaign_repeating_new:
-    pattern: /campaign/repeating/new
+    path: /campaign/repeating/new
     defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:new }
     options:
         expose: true
 
 campaignchain_campaign_repeating_edit:
-    pattern: /campaign/repeating/{id}/edit
+    path: /campaign/repeating/{id}/edit
     defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:edit }
 
 campaignchain_campaign_repeating_edit_modal:
-    pattern: /modal/campaign/repeating/{id}/edit
+    path: /modal/campaign/repeating/{id}/edit
     defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:editModal }
 
 campaignchain_campaign_repeating_edit_api:
-    pattern: /api/private/campaign/repeating/byactivity/{id}/edit
+    path: /api/private/campaign/repeating/byactivity/{id}/edit
     defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:editApi }
     options:
         expose: true
@@ -40,15 +40,15 @@ campaignchain_campaign_repeating_plan:
         permanent: true
 
 campaignchain_campaign_repeating_plan_timeline_detail:
-    pattern:  /campaign/repeating/plan/timeline/{id}
+    path:  /campaign/repeating/plan/timeline/{id}
     defaults: { _controller: CampaignChainCampaignRepeatingBundle:RepeatingPlan:timelineDetail }
     options:
         expose: true
 
 campaignchain_campaign_repeating_plan_timeline_detail_fullscreen:
-    pattern:  /campaign/repeating/plan/timeline/fullscreen/{id}
+    path:  /campaign/repeating/plan/timeline/fullscreen/{id}
     defaults: { _controller: CampaignChainCampaignRepeatingBundle:RepeatingPlan:timelineDetailFullScreen }
 
 campaignchain_campaign_repeating_copy:
-    pattern:  /campaign/repeating/copy/{id}
+    path:  /campaign/repeating/copy/{id}
     defaults: { _controller: CampaignChainCampaignRepeatingBundle:Repeating:copy }
