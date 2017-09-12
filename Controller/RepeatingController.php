@@ -18,6 +18,7 @@
 namespace CampaignChain\Campaign\RepeatingBundle\Controller;
 
 use CampaignChain\Campaign\TemplateBundle\Controller\TemplateController;
+use CampaignChain\CoreBundle\Form\Type\CampaignType;
 use Symfony\Component\HttpFoundation\Request;
 
 class RepeatingController extends TemplateController
@@ -50,16 +51,15 @@ class RepeatingController extends TemplateController
                 $toCampaign = clone $fromCampaign;
                 $toCampaign->setName($fromCampaign->getName() . ' (copied)');
 
-                $campaignType = $this->getCampaignType();
-                $campaignType->setHooksOptions(
+                $campaignTypeOptions = $this->getCampaignTypeOptions();
+                $campaignTypeOptions['hook_options'] =
                     array(
                         'campaignchain-timespan' => array(
                             'disabled' => true,
                         )
-                    )
-                );
+                    );
 
-                $form = $this->createForm($campaignType, $toCampaign);
+                $form = $this->createForm(CampaignType::class, $toCampaign, $campaignTypeOptions);
 
                 $form->handleRequest($request);
 
@@ -92,16 +92,15 @@ class RepeatingController extends TemplateController
                 $toCampaign = clone $fromCampaign;
                 $toCampaign->setName($fromCampaign->getName() . ' (copied)');
 
-                $campaignType = $this->getCampaignType();
-                $campaignType->setHooksOptions(
+                $campaignTypeOptions = $this->getCampaignTypeOptions();
+                $campaignTypeOptions['hook_options'] =
                     array(
                         'campaignchain-timespan' => array(
                             'disabled' => true,
                         )
-                    )
-                );
+                    );
 
-                $form = $this->createForm($campaignType, $toCampaign);
+                $form = $this->createForm(CampaignType::class, $toCampaign, $campaignTypeOptions);
 
                 $form->handleRequest($request);
 
@@ -134,16 +133,15 @@ class RepeatingController extends TemplateController
                 $toCampaign = clone $fromCampaign;
 
                 $toCampaign->setName($toCampaign->getName() . ' (copied)');
-                $campaignType = $this->getCampaignType();
-                $campaignType->setHooksOptions(
+                $campaignTypeOptions = $this->getCampaignTypeOptions();
+                $campaignTypeOptions['hook_options'] =
                     array(
                         'campaignchain-timespan' => array(
                             'disabled' => true,
                         )
-                    )
-                );
+                    );
 
-                $form = $this->createForm($campaignType, $toCampaign);
+                $form = $this->createForm(CampaignType::class, $toCampaign, $campaignTypeOptions);
 
                 $form->handleRequest($request);
 
